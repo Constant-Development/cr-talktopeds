@@ -3,6 +3,7 @@
 Direct Creators: xoraphox#2938 | SixGrams#0544
 
 Constant Development Discord: https://discord.gg/gSQbshCNv4
+
 Constant RolePlay Discord: https://discord.gg/constantroleplay
 
 # Important Note
@@ -15,7 +16,7 @@ With that being said, if you are prefering the "Open Source" version, than we do
 ## Dependenices
 - [qb-menu](https://github.com/qbcore-framework/qb-menu)
 
-This is a StandAlone Menu System which any Framework is permitted to use. This further relates to this Resource being useful for ESX and QBCore directly though with simple Target changes can be useful for vRP.
+This is a Standalone Menu System which any Framework is permitted to use. This further relates to this Resource being useful for ESX and QBCore directly though with simple Target changes can be useful for vRP.
 
 ## Targets Supported
 - [qb-target](https://github.com/Renewed-Scripts/qb-target) 
