@@ -46,7 +46,6 @@ Citizen.CreateThread(function()
             end
     
             if dist <= 100 then
-                print("spawningped")
                 TriggerServerEvent("cr-talktopeds:server:PedSync", k)
                 break
             end
@@ -61,7 +60,6 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent('cr-talktopeds:client:SpawnPed', function(SpawnedPed)
-    print(SpawnedPed)
     local npc = CreatePed(0, Config.Peds[SpawnedPed].ped, Config.Peds[SpawnedPed].coords['x'], Config.Peds[SpawnedPed].coords['y'], Config.Peds[SpawnedPed].coords['z'], Config.Peds[SpawnedPed].heading, true, 1)
     ActivatePedTarget(npc, SpawnedPed)
     v.spawned = true
