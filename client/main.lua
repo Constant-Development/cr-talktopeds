@@ -62,7 +62,7 @@ end)
 RegisterNetEvent('cr-talktopeds:client:SpawnPed', function(SpawnedPed)
     local npc = CreatePed(0, Config.Peds[SpawnedPed].ped, Config.Peds[SpawnedPed].coords['x'], Config.Peds[SpawnedPed].coords['y'], Config.Peds[SpawnedPed].coords['z'], Config.Peds[SpawnedPed].heading, true, 1)
     ActivatePedTarget(npc, SpawnedPed)
-    v.spawned = true
+    Config.Peds[SpawnedPed].spawned = true
 end)
 
 RegisterNetEvent('cr-talktopeds:client:NPC')
