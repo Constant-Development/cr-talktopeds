@@ -9,5 +9,8 @@ shared_script 'config.lua'
 
 client_scripts {
     'client/main.lua',
-    'client/cl_targets.lua',
+}
+
+server_scripts {
+    'server/main.lua'
 }
