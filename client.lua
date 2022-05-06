@@ -74,8 +74,6 @@ end)
 
 RegisterNetEvent('cr-talktopeds:client:NPC')
 AddEventHandler('cr-talktopeds:client:NPC', function(data)
-    local ped = PlayerPedId()
-    --print(data.ped)
     local Name = Config.Peds[data.ped].PedName
     local line = 1
     if data.hookto then
@@ -83,8 +81,7 @@ AddEventHandler('cr-talktopeds:client:NPC', function(data)
     end
     if line ~= 0 then
         local msg = Config.Peds[data.ped].Lines[line].npc
-        local myMenu = {}
-        myMenu = {
+        local myMenu = {
             {
                 id = 1,
                 header = Name,
@@ -107,11 +104,9 @@ end)
 
 RegisterNetEvent('cr-talktopeds:client:Talk')
 AddEventHandler('cr-talktopeds:client:Talk', function(data)
-    local Name = Config.Peds[data.ped].PedName
     local line = 1
-    local msg = ""
-    local myMenu = {}
-    myMenu = {
+    local msg
+    local myMenu = {
         {
             id = 1,
             header = "You",
@@ -121,7 +116,7 @@ AddEventHandler('cr-talktopeds:client:Talk', function(data)
     if data.hookto ~= nil then
         line = data.hookto
     end
-    for k, v in pairs (Config.Peds[data.ped].Lines[line].player) do
+    for _, v in pairs (Config.Peds[data.ped].Lines[line].player) do
         msg = v.text
         myMenu[#myMenu+1] = {
             header = msg,
@@ -137,4 +132,3 @@ AddEventHandler('cr-talktopeds:client:Talk', function(data)
     end
     exports['qb-menu']:openMenu(myMenu)
 end)
-
