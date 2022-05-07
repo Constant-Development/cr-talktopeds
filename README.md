@@ -15,8 +15,10 @@ With that being said, if you are prefering the "Open Source" version, than we do
 
 ## Dependenices
 - [qb-menu](https://github.com/qbcore-framework/qb-menu)
+# OR
+- [nh-context](https://github.com/nerohiro/nh-context)
 
-This is a Standalone Menu System which any Framework is permitted to use. This further relates to this Resource being useful for ESX and QBCore directly though with simple Target changes can be useful for vRP.
+These are both Standalone Menu Systems which any Framework is permitted to use. This further relates to this Resource being useful for ESX and QBCore directly though with simple Target changes can be useful for vRP.
 
 ## Targets Supported
 - [qb-target](https://github.com/Renewed-Scripts/qb-target) 
