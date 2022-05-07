@@ -48,7 +48,7 @@ Citizen.CreateThread(function()
             end
     
             if dist <= 100 then
-                TriggerServerEvent("cr-talktopeds:server:SpawnPed", k)
+                TriggerEvent("cr-talktopeds:client:SpawnPed", k)
                 break
             end
             
@@ -63,7 +63,6 @@ end)
 
 RegisterNetEvent('cr-talktopeds:client:SpawnPed', function(SpawnedPed)
     local npc = CreatePed(0, Config.Peds[SpawnedPed].ped, Config.Peds[SpawnedPed].coords['x'], Config.Peds[SpawnedPed].coords['y'], Config.Peds[SpawnedPed].coords['z']-1, Config.Peds[SpawnedPed].heading, false, 1)
-    TriggerServerEvent("cr-talktopeds:server:Syncing", SpawnedPed)
     SetEntityAsMissionEntity(npc, true, true)
     SetBlockingOfNonTemporaryEvents(npc, true)
     FreezeEntityPosition(npc, true)
