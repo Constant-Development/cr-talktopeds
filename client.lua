@@ -73,7 +73,7 @@ end)
 
 RegisterNetEvent('cr-talktopeds:client:NPC')
 AddEventHandler('cr-talktopeds:client:NPC', function(data, hook)
-    local myMenu = {}
+    local myMenu
     local Name
     local msg
     local ped
@@ -143,7 +143,7 @@ end)
 
 RegisterNetEvent('cr-talktopeds:client:Talk')
 AddEventHandler('cr-talktopeds:client:Talk', function(data, hook)
-    local myMenu = {}
+    local myMenu
     local line = 1
     local msg
     local ped
