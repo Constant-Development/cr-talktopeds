@@ -72,62 +72,129 @@ RegisterNetEvent('cr-talktopeds:client:SpawnPed', function(SpawnedPed)
 end)
 
 RegisterNetEvent('cr-talktopeds:client:NPC')
-AddEventHandler('cr-talktopeds:client:NPC', function(data)
-    local Name = Config.Peds[data.ped].PedName
+AddEventHandler('cr-talktopeds:client:NPC', function(data, hook)
+    local myMenu = {}
+    local Name
+    local msg
+    local ped
     local line = 1
-    if data.hookto then
-        line = data.hookto
+    if type(data) == "table" then
+        Name = Config.Peds[data.ped].PedName
+        msg = Config.Peds[data.ped].Lines[line].npc
+        ped = data.ped
+        if data.hookto then
+            line = data.hookto
+        end
+    else
+        Name = Config.Peds[data].PedName
+        ped = data
+        if hook then
+            if hook ~= 0 then
+                line = hook
+                msg = Config.Peds[data].Lines[hook].npc
+            else
+                line = 0
+            end
+        end
     end
     if line ~= 0 then
-        local msg = Config.Peds[data.ped].Lines[line].npc
-        local myMenu = {
-            {
-                id = 1,
-                header = Name,
-                isMenuHeader = true
-            },
-            {
-                header = msg,
-                params = {
-                event = "cr-talktopeds:client:Talk",
-                args = {
-                    ped = data.ped,
-                    hookto = line
+        if Config.Menu == "qb" then
+            Name = Config.Peds[data.ped].PedName
+            msg = Config.Peds[data.ped].Lines[line].npc
+            myMenu = {
+                {
+                    header = Name,
+                    isMenuHeader = true
+                },
+            }
+            myMenu[#myMenu+1] = {
+                    header = msg,
+                    params = {
+                    event = "cr-talktopeds:client:Talk",
+                    args = {
+                        ped = data.ped,
+                        hookto = line
+                    }
                 }
             }
+            exports['qb-menu']:openMenu(myMenu)
+        elseif Config.Menu == "nh" then
+            myMenu = {
+                {
+                    header = Name,
+                    disabled = true
+                },
             }
-        }
-        exports['qb-menu']:openMenu(myMenu)
+            if hook then
+                line = hook
+            end
+            myMenu[#myMenu+1] = {
+                header = msg,
+                event = "cr-talktopeds:client:Talk",
+                args = {
+                    ped,
+                    line
+                }
+            }
+            TriggerEvent('nh-context:createMenu', myMenu)
+        end
     end
 end)
 
 RegisterNetEvent('cr-talktopeds:client:Talk')
-AddEventHandler('cr-talktopeds:client:Talk', function(data)
+AddEventHandler('cr-talktopeds:client:Talk', function(data, hook)
+    local myMenu = {}
     local line = 1
     local msg
-    local myMenu = {
-        {
-            id = 1,
-            header = "You",
-            isMenuHeader = true
-        },
-    }
-    if data.hookto ~= nil then
-        line = data.hookto
-    end
-    for _, v in pairs (Config.Peds[data.ped].Lines[line].player) do
-        msg = v.text
-        myMenu[#myMenu+1] = {
-            header = msg,
-            --text = desc,
-            params = {
-                event = "cr-talktopeds:client:NPC",
-                args = {
-                    ped = data.ped,
-                    hookto = v.LineHook
+    local ped
+    if Config.Menu == "qb" then
+        if data.hookto ~= nil then
+            line = data.hookto
+        end
+        myMenu = {
+            {
+                header = "You",
+                isMenuHeader = true
+            },
+        }
+        if data.hookto ~= nil then
+            line = data.hookto
+        end
+        for _, v in pairs (Config.Peds[data.ped].Lines[line].player) do
+            msg = v.text
+            myMenu[#myMenu+1] = {
+                header = msg,
+                params = {
+                    event = "cr-talktopeds:client:NPC",
+                    args = {
+                        ped = data.ped,
+                        hookto = v.LineHook
+                    }
                 }
             }
+        end
+        exports['qb-menu']:openMenu(myMenu)
+    elseif Config.Menu == "nh" then
+        if data ~= nil then
+            ped = data
+        end
+        myMenu = {
+            {
+                header = "You",
+                disabled = true
+            },
         }
+        for _, v in pairs (Config.Peds[ped].Lines[hook].player) do
+            msg = v.text
+            myMenu[#myMenu+1] = {
+                header = msg,
+                event = "cr-talktopeds:client:NPC",
+                args = {
+                    ped,
+                    v.LineHook
+                }
+            }
+        end
+        TriggerEvent('nh-context:createMenu', myMenu)
     end
-    exports['qb-menu']:openMenu(myMenu)
 end)
