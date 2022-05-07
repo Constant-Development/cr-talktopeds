@@ -3,7 +3,9 @@ Config = {}
 Config.Target = 'QB'
  -- 'QB' = qb-target | https://github.com/Renewed-Scripts/qb-target
  -- 'ESX' = qtarget | https://github.com/overextended/qtarget
-
+Config.Menu = "qb"
+ -- 'qb' = qb-menu | https://github.com/qbcore-framework/qb-menu
+ -- 'nh' = nh-context | https://github.com/nerohiro/nh-context
 Config.Peds = {
     [1] = { -- Copy the template and add it below other entries to add as many peds as you would like.
         coords = vector3(257.32, -257.33, 54.04), -- Coordinates for the ped to spawn
