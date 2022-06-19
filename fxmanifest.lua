@@ -2,11 +2,14 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'xoraphox#2938 | Constant Development'
-description 'Talk to PEDs /w Dialouge for QBCore'
-version '1.0.0'
+description 'Talk to PEDs /w Dialogue | Standalone Ressource'
+version '1.1.0'
 
-shared_script 'config.lua'
 
 client_scripts {
+    'config.lua',
+    'events.lua',
     'client.lua',
 }
+
+lua54 'yes'
