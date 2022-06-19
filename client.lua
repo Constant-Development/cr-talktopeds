@@ -35,7 +35,7 @@ function LoadAnimDict(dict)
         RequestAnimDict(dict)
         Wait(5)
     end
-end 
+end
 
 Citizen.CreateThread(function()
     while true do
