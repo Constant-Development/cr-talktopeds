@@ -4,6 +4,8 @@ Direct Creators: xoraphox#2938 | SixGrams#0544
 
 Constant Development Discord: https://discord.gg/gSQbshCNv4
 
+Constant Development Tebex: https://constant-development.tebex.io/
+
 Constant RolePlay Discord: https://discord.gg/constantroleplay
 
 If you run into any issues with this Resource, please Contact a member of the Constant Development Team via our Discord! :)
